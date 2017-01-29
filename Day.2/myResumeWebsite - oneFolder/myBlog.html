@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <title>My Blog</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="resume of turzo ahsan">
+    <meta name="author" content="turzo ahsan">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">   
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <!-- My CSS -->  
+    <link id="theme-style" rel="stylesheet" href="css/myBlog_styles.css">
+</head> 
+
+<body>
+<!-- <div class="wrapper">   -->  
+        <div class="main-wrapper">            
+            <section class="section summary-section">
+                <h2 class="section-title" style="text-align:center;">JAVA Persistence API (JPA)</h2>
+                <h4 class="section-title" style="text-align:center;"></i>জাভা পারসিসটেন্স এপিআই</h4>
+                <div class="summary">
+<p style="text-align: justify;">
+    জেপিএ হচ্ছে সেইসব ক্লাস এবং মেথডের সংগ্রহ যা দ্বারা প্রোগ্রামের ডেটা(অবজেক্ট) ডেটাবেজে স্টোর করে রাখা যায়। একটা প্রোগ্রাম বন্ধ করার সাথে সাথে ঐ প্রোগ্রামের ডেটা(অবজেক্ট) মেমোরি থেকে মুছে যায়। সেইসব ডেটা(অবজেক্ট)কে প্রোগ্রামের লাইফসাইকেলের চেয়েও অধিক সময়ের জন্য স্টোর করে রাখার জন্য জেপিএ প্রয়োজন। জেপিএ ফ্লেক্সিবল এবং কমপ্লেক্স। জেপিএ এর কোর এলিমেন্ট হচ্ছে এনটিটি।
+    অবজেক্টঃ অবজেক্ট হচ্ছে কোনও ক্লাসের ইন্সট্যান্স যা মেমোরিতে অবস্থান করে। ফলে, প্রোগ্রাম বন্ধ করলে মেমোরি থেকে অবজেক্ট মুছে যায়, এবং প্রোগ্রাম আবার কম্পাইল করলে অবজেক্ট পূণরায় মেমোরিতে লেখা হয়। 
+    এনটিটিঃ এনটিটি হচ্ছে বিশেষ ধরণের অবজেক্ট যা মেমোরির পাশাপাশি ডেটাবেজেও অবস্থান করে। এনটিটিকে টেবল থেকে ক্লাসে এবং ক্লাস থেকে টেবলে ওয়ান-টু-ওয়ান ম্যাপ করা যায়। 
+    জাভাঃ জাভায় অবজেক্ট এবং স্টেট ম্যানিপুলেট করা হয় কনক্রিট ক্লাস, এবস্ট্রাক্ট ক্লাস, ইন্টারফেস, মেথড কল ইত্যাদীর মাধ্যমে।
+    ডেটাবেজঃ ডেটাবেজে ডেটা ম্যানিপুলেট করা হয় প্রাইমারি-কি, ফরেন-কি, জয়েন-টেবল ইত্যাদীর মাধ্যমে। 
+    অবজেক্ট রিলেশন ম্যাপিং (ওআরএম) জাভা এবং ডেটাবেজের মধ্যে সমন্বয় স্থাপন করে। বিভিন্ন ধরণের ওআরএম এর মধ্যে সর্বাধিক প্রচলিত হল হাইবারনেট, জাভা ডেটা অবজেক্ট, টপলিংক ইত্যাদী। জাভা এন্টারপ্রাইজ এডিশনের ওআরএম হচ্ছে জেপিএ।
+    প্রতিটা এন্টারপ্রাইজ এপ্লিকেশনই অনেক ডেটা নিয়ে কাজ করে, ফলে ডেটাবেজে ডেটা স্টোর ও রিট্রিভ অপারেশন এন্টারপ্রাইজ এপ্লিকেশনের জন্য গুরুত্বপূর্ণ। জাভা ডেভেলপাররা সাধারণত র’কোড লিখেন অথবা ফ্রেমওয়ার্ক ব্যাবহার করেন ডেটাবেজ ইমপ্লিমেন্ট করার জন্য। জেপিএ ব্যাবহার করলে ডেটাবেজ ইমপ্লিমেন্ট করার কাজটা অনেক সহজ হয়। জাভা প্রোগ্রামের অবজেক্ট মডেল এবং ডেটাবেজ প্রোগ্রামের রিলেশনাল মডেলের মধ্যে জেপিএ সেতু হিসেবে কাজ করে।     
+    রিলেশনাল মডেলের সাথে অবজেক্ট মডেলের পার্থক্যঃ
+    ১। রিলেশনাল অবজেক্টকে টেবুলার ফরম্যাটে উপস্থাপণ করা হয় আর অবজেক্ট মডেলকে অবজেক্ট ফরম্যাটের গ্রাফ আকারে উপস্থাপণ করা হয়।
+    ২। অবজেক্ট মডেল ইনহেরিট্যান্স সাপোর্ট করে যা রিলেশনাল মডেলে সম্ভব না।
+    ৩। অবজেক্ট ডোমেইন মডেল থেকে রিলেশনাল মডেল একাধিক রিলেশন চিনহিত করতে পারে না।
+    ৪। অবজেক্ট মডেলে এবপং রিলেশনাল মডেলে অবজেক্ট নেটওয়ার্কে অবজেক্টের মধ্যে ডেটা নেভিগেট করার পদ্ধতি ভিন্ন। 
+</p>
+<p style="text-align: justify;">
+    <img src="images/jpa/jpa1.png">
+    <br>
+    ফিগার ১- জেপিএ এর প্রাথমিক ধারণা
+</p>
+<p style="text-align: justify;">
+    জেপিএ বিজনেস এনটিটিকে রিলেশনাল এনটিটি হিসেবে স্টোর করার একটি মাধ্যম। জেপিএ নির্ধারণ করে কীভাবে প্লেইন ওরিয়েন্টেড জাভা অবজেক্টকে এনটিটি হিসেবে সংগায়িত করতে হয় এবং এনটিটি-রিলেশন ব্যাবস্থাপণা নির্ধারণ করে।  
+</p>
+<p style="text-align: justify;">
+    <img src="images/jpa/jpa2.png">
+    <br>
+    ফিগার ২- জেপিএ এর ক্লাস লেভেল আর্কিটেকচার (জেপিএ কোর ক্লাস এবং ইন্টারফেস)
+</p>
+<p style="text-align: justify;">
+    EntityManagerFactory     - এটা EntityManager এর ফ্যাক্টোরি ক্লাস। এই ক্লাসে একাধিকEntityManager ইন্সট্যান্স ক্রিয়েট ও ম্যানেজ করা হয়।
+    EntityManager – এটা একটা ইন্টারফেস, যেখানে অবজেক্টের ওপর বিদ্যমান অপারেশন ম্যানেজ করা হয়। 
+    EntityTransaction - এটা EntityManager এর সাথে ওয়ান-টু-ওয়ান ভাবে সম্পর্কিত। প্রতি EntityManager এর জন্য EntityTransaction ক্লাস অপারেশন মেইনটেইন করে।
+    Persistence - EntityManagerFactory ইন্সট্যান্স পাওয়ার জন্য এই ক্লাসে কিছু স্ট্যাটিক মেথড রাখা হয়।
+    Query – রিলেশনাল অবজেক্ট পাওয়ার জন্য এই ইন্টারফেসটা জেপিএ ভেন্ডর ইমপ্লিমেন্ট করে।
+</p>
+<p style="text-align: justify;">
+    <img src="images/jpa/jpa3.png">
+    <br>
+    ফিগার ৩ – জেপিএ ক্লাস রিলেশনশিপ</p>
+<p style="text-align: justify;">
+    EntityManagerFactory এবং EntityManager ঃ one-to-many
+    EntityManager এবং EntityTransaction ঃ one-to-one
+    EntityManager এবং Query ঃ one-to-many
+    EntityManager এবং Entity ঃ one-to-many
+</p>      
+<p style="text-align: justify;">
+    অবজেক্ট রিলেশনাল টেকনোলজির কোর অংশ হচ্ছে orm.xml ফাইল ম্যাপ করা। xml ফাইল যেহেতু কম্পাইল করা লাগে না, তাই সহজেই একাধিক ডেটা সোর্সে পরিবর্তন আনা যায়। ওআরএম একটা প্রোগ্রামিং এবিলিটি যা অবজেক্ট টাইপ ডেটাকে রিলেশনাল টাইপ ডেটায় এবং রিলেশনাল টাইপ ডেটাকে অবজেক্ট টাইপে কনভার্ট করতে পারে। ওআরএম এর মূল ফিচার হচ্ছে অবজেক্টকে ডেটাবেজের ডেটার সাথে ম্যাপ বা বাইন্ড করা। ম্যাপ করার সময় ডেটা, ডেটা টাইপ, অন্যান্য এনটিটির সাথে ডেটার রিলেশন হিসাব করতে হয়। ওআরএম এর মাধ্যমে অবজেক্ট ওরিয়েন্টেড ক্লাসের মাধ্যমে পারসিস্টেন্স ক্লাস কোড করা যায়। ওয়ারএম এ ডেটা ফেচ করার বিভিন্ন পন্থা আছে। ওআরএম স্ট্যাবল, তাই ইন্ডাস্ট্রিতে ব্যাবহৃত হয়।
+</p> 
+<p style="text-align: justify;">
+    <img src="images/jpa/jpa4.png">
+    <br>
+    ফিগার ৪ – ওআরএম আর্কিটেকচার
+</p>
+<p style="text-align: justify;">
+    ১ম পর্যায় (অবজেক্ট ডেটা) – এই পর্যায়ে অবস্থিত সার্ভিস ইন্টারফেস এবং ক্লাস এবং প্লেইন ওরিয়েন্টেড জাভা অবজেক্ট ক্লাস। এটা প্রধাণ বিজনেস কম্পোনেন্ট লেয়ার যেখানে বিজনেস লজিক অপারেশন এবং এট্রিবিউটগুলো থাকে। উদাহরণ হিসেবে একটা schema - Employee Database দেয়া হল। 
+    •   Employee POJO ক্লাসের এট্রিবিউট হল ID, name, salary, ও designation. মেথড হল setter ও getter।
+    •   Employee DAO/Service ক্লাসে থাকে বিভিন্ন সার্ভিস মেথড যেমন create employee, find employee, ও delete employee।
+</p>
+<p style="text-align: justify;">
+    ২য় পর্যায় – এই পর্যায়কে ম্যাপিং বা পারসিস্টেন্স ফেজও বলা হয়। এই পর্যায়ে থাকে জেপিএ প্রোভাইডার, ম্যাপিং ফাইল, জেপিএ লোডার এবং অবজেক্ট গ্রিড। 
+    জেপিএ প্রোভাইডার – জেপিএ (javax.persistence) সম্বলিত ভেন্ডর প্রোডাক্ট। উদাহরণ- Eclipselink, Toplink, Hibernate।
+    ম্যাপিং ফাইল - ORM.xml ফাইলে পিওজিও ক্লাসের ডেটা ও রিলেশনাল ডেটাবেজের ডেটার ম্যাপিং কনফিগারেশন থাকে।
+    জেপিএ লোডার – এটা অনেকটা ক্যাশ মেমোরির মতন। জেপিএ লোডার রিলেশনাল গ্রিড ডেটা লোড করে। এটা পিওজিও ক্লাসের এট্রিবিউটের সাথে ইন্ট্যার‍্যাক্ট করার জন্য ডেটাবেজের কপি হিসেবে কাজ করে। 
+    অবজেক্ট গ্রিড – অবজেক্ট গ্রিড হচ্ছে একতা অস্থায়ী লোকেশন যেখানে রিলেশনাল ডেটার কপি স্টোর হয়ে থাকে, অএকটা ক্যাশ মেমোরির মতন। ডেটাবেজের ওপর চালানো কোয়েরিগুলো প্রথমে অবজেক্ট গ্রিডের ডেটায় এফেক্ট করে। 
+</p>
+<p style="text-align: justify;">
+    ৩য় পর্যায় – এই পর্যায়কে বলা হয় রিলেশনাল ডেটা ফেজ। এই পর্যায়ে সেইসব রিলেশনাল ডেটা থাকে যারা বিজনেস কম্পোনেন্টের সাথে লজিকালি সম্পর্কিত। যখন বিজনেস কম্পোনেন্ট কমিট করে, কেবল তখনই ডেটাবেজে ডেটা স্টোরড হয়। তার আগ পর্যন্ত পরিবর্তিত ডেটা গ্রিড ফরম্যাটে কোনও ক্যাশ মেমোরিতে জমা হয়। ডেটা ফেচ করার প্রসেসও একই। 
+    উপরোক্ত ৩টি পর্যায়ের প্রোগ্রামিং ইন্ট্যারাকশানকে বলা হয় অবজেক্ট রিলেশনাল ম্যাপিং। 
+</p>
+
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+<p style="text-align: justify;">জেপিএ সিম্পল প্রোগ্রাম - স্টুডেন্ট ডেটাবেজ।</p>
+
+<p style="text-align: justify;">১। প্রথমেই MySQL এ একটা ডেটাবেজ তৈরী করতে হবে, এবং সেখানে একটা টেবল তৈরী করতে হবে।</p>
+</p>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">CREATE</span> <span style="color: #66d9ef">DATABASE</span> <span style="color: #66d9ef">IF</span> <span style="color: #66d9ef">NOT</span> <span style="color: #66d9ef">EXISTS</span> <span style="color: #f8f8f2">javahelps;</span>
+
+<span style="color: #66d9ef">CREATE</span>  <span style="color: #66d9ef">TABLE</span> <span style="color: #f8f8f2">javahelps.</span><span style="color: #a6e22e">student</span> <span style="color: #f8f8f2">(</span> 
+<span style="color: #f8f8f2">student_id</span> <span style="color: #66d9ef">INT</span> <span style="color: #66d9ef">NOT</span> <span style="color: #66d9ef">NULL</span> <span style="color: #f8f8f2">,</span>
+<span style="color: #f8f8f2">student_name</span> <span style="color: #66d9ef">VARCHAR</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">45</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">NOT</span> <span style="color: #66d9ef">NULL</span> <span style="color: #f8f8f2">,</span>
+<span style="color: #f8f8f2">student_age</span> <span style="color: #66d9ef">INT</span> <span style="color: #66d9ef">NOT</span> <span style="color: #66d9ef">NULL</span> <span style="color: #f8f8f2">,</span>
+<span style="color: #66d9ef">PRIMARY</span> <span style="color: #66d9ef">KEY</span> <span style="color: #f8f8f2">(student_id)</span> <span style="color: #f8f8f2">);</span>
+</pre></td></tr></table></div>
+
+<p style="text-align: justify;">২। এরপর Eclipse  IDE দিয়ে একটি জাভা প্রজেক্ট ওপেন করতে হবে এই নামে JPAHelloWorld।
+<img src ="images/jpa-hw-1.png">
+
+<p style="text-align: justify;">৩। এরপর প্রজেক্টের ওপর রাইট-ক্লিক করে Configure → Convert to Maven Project সিলেক্ট করতে হবে, সেখানে group id: “com.javahelps” এবং artifact id: “JPAHelloWorld” দিতে হবে।</p>
+
+<p style="text-align: justify;">৪। এরপর pom.xml ফাইলের কোড নিচের কোড দিয়ে রিপ্লেস করতে হবে।</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;project</span> <span style="color: #000077">xmlns=</span><span style="background-color: #e0e0ff">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span style="color: #000077">xmlns:xsi=</span><span style="background-color: #e0e0ff">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span style="color: #000077">xsi:schemaLocation=</span><span style="background-color: #e0e0ff">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;modelVersion&gt;</span>4.0.0<span style="color: #007700">&lt;/modelVersion&gt;</span>
+    <span style="color: #007700">&lt;groupId&gt;</span>com.javahelps<span style="color: #007700">&lt;/groupId&gt;</span>
+    <span style="color: #007700">&lt;artifactId&gt;</span>JPAHelloWorld<span style="color: #007700">&lt;/artifactId&gt;</span>
+    <span style="color: #007700">&lt;version&gt;</span>0.0.1-SNAPSHOT<span style="color: #007700">&lt;/version&gt;</span>
+    <span style="color: #007700">&lt;build&gt;</span>
+        <span style="color: #007700">&lt;sourceDirectory&gt;</span>src<span style="color: #007700">&lt;/sourceDirectory&gt;</span>
+        <span style="color: #007700">&lt;plugins&gt;</span>
+            <span style="color: #007700">&lt;plugin&gt;</span>
+                <span style="color: #007700">&lt;artifactId&gt;</span>maven-compiler-plugin<span style="color: #007700">&lt;/artifactId&gt;</span>
+                <span style="color: #007700">&lt;version&gt;</span>3.3<span style="color: #007700">&lt;/version&gt;</span>
+                <span style="color: #007700">&lt;configuration&gt;</span>
+                    <span style="color: #007700">&lt;source&gt;</span>1.8<span style="color: #007700">&lt;/source&gt;</span>
+                    <span style="color: #007700">&lt;target&gt;</span>1.8<span style="color: #007700">&lt;/target&gt;</span>
+                <span style="color: #007700">&lt;/configuration&gt;</span>
+            <span style="color: #007700">&lt;/plugin&gt;</span>
+        <span style="color: #007700">&lt;/plugins&gt;</span>
+    <span style="color: #007700">&lt;/build&gt;</span>
+    <span style="color: #007700">&lt;dependencies&gt;</span>
+        <span style="color: #007700">&lt;dependency&gt;</span>
+            <span style="color: #007700">&lt;groupId&gt;</span>org.hibernate<span style="color: #007700">&lt;/groupId&gt;</span>
+            <span style="color: #007700">&lt;artifactId&gt;</span>hibernate-core<span style="color: #007700">&lt;/artifactId&gt;</span>
+            <span style="color: #007700">&lt;version&gt;</span>4.3.10.Final<span style="color: #007700">&lt;/version&gt;</span>
+        <span style="color: #007700">&lt;/dependency&gt;</span>
+        <span style="color: #007700">&lt;dependency&gt;</span>
+            <span style="color: #007700">&lt;groupId&gt;</span>org.hibernate<span style="color: #007700">&lt;/groupId&gt;</span>
+            <span style="color: #007700">&lt;artifactId&gt;</span>hibernate-entitymanager<span style="color: #007700">&lt;/artifactId&gt;</span>
+            <span style="color: #007700">&lt;version&gt;</span>4.3.10.Final<span style="color: #007700">&lt;/version&gt;</span>
+        <span style="color: #007700">&lt;/dependency&gt;</span>
+        <span style="color: #007700">&lt;dependency&gt;</span>
+            <span style="color: #007700">&lt;groupId&gt;</span>org.slf4j<span style="color: #007700">&lt;/groupId&gt;</span>
+            <span style="color: #007700">&lt;artifactId&gt;</span>slf4j-log4j12<span style="color: #007700">&lt;/artifactId&gt;</span>
+            <span style="color: #007700">&lt;version&gt;</span>1.7.12<span style="color: #007700">&lt;/version&gt;</span>
+        <span style="color: #007700">&lt;/dependency&gt;</span>
+        <span style="color: #007700">&lt;dependency&gt;</span>
+            <span style="color: #007700">&lt;groupId&gt;</span>org.javassist<span style="color: #007700">&lt;/groupId&gt;</span>
+            <span style="color: #007700">&lt;artifactId&gt;</span>javassist<span style="color: #007700">&lt;/artifactId&gt;</span>
+            <span style="color: #007700">&lt;version&gt;</span>3.20.0-GA<span style="color: #007700">&lt;/version&gt;</span>
+        <span style="color: #007700">&lt;/dependency&gt;</span>
+        <span style="color: #007700">&lt;dependency&gt;</span>
+            <span style="color: #007700">&lt;groupId&gt;</span>mysql<span style="color: #007700">&lt;/groupId&gt;</span>
+            <span style="color: #007700">&lt;artifactId&gt;</span>mysql-connector-java<span style="color: #007700">&lt;/artifactId&gt;</span>
+            <span style="color: #007700">&lt;version&gt;</span>5.1.36<span style="color: #007700">&lt;/version&gt;</span>
+        <span style="color: #007700">&lt;/dependency&gt;</span>
+    <span style="color: #007700">&lt;/dependencies&gt;</span>
+<span style="color: #007700">&lt;/project&gt;</span>
+</pre></td></tr></table></div>
+
+<p style="text-align: justify;">৫। “com.javahelps.jpa” নামে নতুন প্যাকেজ ওপেন করতে হবে এবং প্যাকেজের ভেতর Student ও Main নামে নতুন ক্লাস নিতে হবে। Main ক্লাসে Main মেথড থাকবে।</p>
+
+<p style="text-align: justify;">৬। Student ক্লাসের কোড</p>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">package</span> <span style="color: #f8f8f2">com</span><span style="color: #f92672">.</span><span style="color: #a6e22e">javahelps</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jpa</span><span style="color: #f92672">;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.Serializable</span><span style="color: #f92672">;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.Column</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.Entity</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.Id</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.Table</span><span style="color: #f92672">;</span>
+
+<span style="color: #a6e22e">@Entity</span>
+<span style="color: #a6e22e">@Table</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;student&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Student</span> <span style="color: #66d9ef">implements</span> <span style="color: #f8f8f2">Serializable</span> <span style="color: #f92672">{</span>
+    <span style="color: #a6e22e">@Id</span>
+    <span style="color: #a6e22e">@Column</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;student_id&quot;</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">unique</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">;</span>
+
+    <span style="color: #a6e22e">@Column</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;student_name&quot;</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">nullable</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">false</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">;</span>
+
+    <span style="color: #a6e22e">@Column</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;student_age&quot;</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">nullable</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">false</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">getId</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setId</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">getName</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setName</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">name</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">getAge</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setAge</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">age</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #a6e22e">@Override</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">toString</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">id</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;\t&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">name</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;\t&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+<span style="color: #f92672">}</span>
+</pre></td></tr></table></div>
+
+
+<p style="text-align: justify;">৭। প্রজেক্টে রাইট-ক্লিক করে resources নামের একটা ফোল্ডার বানাতে হবে। এই ফোল্ডারের ভেতর META-INF নামে একটা ফোল্ডার বানাতে হবে। তার ভেতর persistence.xml নামের ফাইল বানিয়ে নিচের কোড এড করতে হবে।</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span style="color: #007700">&lt;persistence</span> <span style="color: #000077">version=</span><span style="background-color: #e0e0ff">&quot;2.0&quot;</span>
+    <span style="color: #000077">xmlns=</span><span style="background-color: #e0e0ff">&quot;http://java.sun.com/xml/ns/persistence&quot;</span> <span style="color: #000077">xmlns:xsi=</span><span style="background-color: #e0e0ff">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span style="color: #000077">xsi:schemaLocation=</span><span style="background-color: #e0e0ff">&quot;http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;persistence-unit</span> <span style="color: #000077">name=</span><span style="background-color: #e0e0ff">&quot;JavaHelps&quot;</span> <span style="color: #000077">transaction-type=</span><span style="background-color: #e0e0ff">&quot;RESOURCE_LOCAL&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #666666; font-style: italic">&lt;!-- Persistence provider --&gt;</span>
+        <span style="color: #007700">&lt;provider&gt;</span>org.hibernate.jpa.HibernatePersistenceProvider<span style="color: #007700">&lt;/provider&gt;</span>
+        <span style="color: #666666; font-style: italic">&lt;!-- Entity classes --&gt;</span>
+        <span style="color: #007700">&lt;class&gt;</span>com.javahelps.jpa.Student<span style="color: #007700">&lt;/class&gt;</span>
+        <span style="color: #007700">&lt;properties&gt;</span>
+            <span style="color: #666666; font-style: italic">&lt;!-- The JDBC driver of your database --&gt;</span>
+            <span style="color: #007700">&lt;property</span> <span style="color: #000077">name=</span><span style="background-color: #e0e0ff">&quot;javax.persistence.jdbc.driver&quot;</span> <span style="color: #000077">value=</span><span style="background-color: #e0e0ff">&quot;com.mysql.jdbc.Driver&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #666666; font-style: italic">&lt;!-- The JDBC URL to the database instance --&gt;</span>
+            <span style="color: #007700">&lt;property</span> <span style="color: #000077">name=</span><span style="background-color: #e0e0ff">&quot;javax.persistence.jdbc.url&quot;</span> <span style="color: #000077">value=</span><span style="background-color: #e0e0ff">&quot;jdbc:mysql://localhost:3306/javahelps&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #666666; font-style: italic">&lt;!-- The database username --&gt;</span>
+            <span style="color: #007700">&lt;property</span> <span style="color: #000077">name=</span><span style="background-color: #e0e0ff">&quot;javax.persistence.jdbc.user&quot;</span> <span style="color: #000077">value=</span><span style="background-color: #e0e0ff">&quot;এখানে ডেটাবেজের ইউজারনেম বসবে। ডিফল্টভাবে root দেয়া থাকে।&quot;</span> <span style="color: #007700">/&gt;</span>
+            <span style="color: #666666; font-style: italic">&lt;!-- The database password --&gt;</span>
+            <span style="color: #007700">&lt;property</span> <span style="color: #000077">name=</span><span style="background-color: #e0e0ff">&quot;javax.persistence.jdbc.password&quot;</span> <span style="color: #000077">value=</span><span style="background-color: #e0e0ff">&quot;এখানে ডেটাবেজের পাসওয়ার্ড বসবে। ডিফল্টভাবে খালি থাকে।&quot;</span> <span style="color: #007700">/&gt;</span>
+        <span style="color: #007700">&lt;/properties&gt;</span>
+    <span style="color: #007700">&lt;/persistence-unit&gt;</span>
+<span style="color: #007700">&lt;/persistence&gt;</span>
+</pre></td></tr></table></div>
+
+
+<p style="text-align: justify;">৮। Main ক্লাসে নিচের কোড এড করতে হবে। এই কোড দ্বারা CRUD অপারেশন দেখানো হয়েছে। জাভা এবং অবজেক্ট ওরিয়েন্টেড কনসেপ্ট জানা থাকলে কোড পড়েই বুঝতে পারার কথা কী হচ্ছে।</p>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">package</span> <span style="color: #f8f8f2">com</span><span style="color: #f92672">.</span><span style="color: #a6e22e">javahelps</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jpa</span><span style="color: #f92672">;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.List</span><span style="color: #f92672">;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.EntityManager</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.EntityManagerFactory</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.EntityTransaction</span><span style="color: #f92672">;</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.persistence.Persistence</span><span style="color: #f92672">;</span>
+
+<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Main</span> <span style="color: #f92672">{</span>
+    <span style="color: #75715e">// Create an EntityManagerFactory when you start the application.</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">EntityManagerFactory</span> <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Persistence</span>
+            <span style="color: #f92672">.</span><span style="color: #a6e22e">createEntityManagerFactory</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;JavaHelps&quot;</span><span style="color: #f92672">);</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">main</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">[]</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+
+        <span style="color: #f8f8f2">create</span><span style="color: #f92672">(</span><span style="color: #ae81ff">1</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;Turzo&quot;</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">22</span><span style="color: #f92672">);</span> <span style="color: #75715e">// Turzo will get an id 1</span>
+        <span style="color: #f8f8f2">create</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;Rabby&quot;</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">20</span><span style="color: #f92672">);</span> <span style="color: #75715e">// Rabby will get an id 2</span>
+        <span style="color: #f8f8f2">create</span><span style="color: #f92672">(</span><span style="color: #ae81ff">3</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;Rony&quot;</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">25</span><span style="color: #f92672">);</span> <span style="color: #75715e">// Rony will get an id 3</span>
+       
+        <span style="color: #f8f8f2">upate</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;Rabby&quot;</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">25</span><span style="color: #f92672">);</span>  <span style="color: #75715e">// Update the age of Rabby using the id</span>
+       <span style="color: #f8f8f2">delete</span><span style="color: #f92672">(</span><span style="color: #ae81ff">3</span><span style="color: #f92672">);</span> <span style="color: #75715e">// Delete the Rony from database</span>
+
+        <span style="color: #75715e">// Print all the Students</span>
+        <span style="color: #f8f8f2">List</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Student</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">students</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">readAll</span><span style="color: #f92672">();</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">students</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">for</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Student</span> <span style="color: #f8f8f2">stu</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">students</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">stu</span><span style="color: #f92672">);</span>
+            <span style="color: #f92672">}</span>
+        <span style="color: #f92672">}</span>
+
+        <span style="color: #75715e">// NEVER FORGET TO CLOSE THE ENTITY_MANAGER_FACTORY</span>
+        <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span><span style="color: #f92672">.</span><span style="color: #a6e22e">close</span><span style="color: #f92672">();</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #75715e">/**</span>
+<span style="color: #75715e">     * Create a new Student.</span>
+<span style="color: #75715e">     * </span>
+<span style="color: #75715e">     * @param name</span>
+<span style="color: #75715e">     * @param age</span>
+<span style="color: #75715e">     */</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">create</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #75715e">// Create an EntityManager</span>
+        <span style="color: #f8f8f2">EntityManager</span> <span style="color: #f8f8f2">manager</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span><span style="color: #f92672">.</span><span style="color: #a6e22e">createEntityManager</span><span style="color: #f92672">();</span>
+        <span style="color: #f8f8f2">EntityTransaction</span> <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">;</span>
+
+        <span style="color: #66d9ef">try</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Get a transaction</span>
+            <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getTransaction</span><span style="color: #f92672">();</span>
+            <span style="color: #75715e">// Begin the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">begin</span><span style="color: #f92672">();</span>
+
+            <span style="color: #75715e">// Create a new Student object</span>
+            <span style="color: #f8f8f2">Student</span> <span style="color: #f8f8f2">stu</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Student</span><span style="color: #f92672">();</span>
+            <span style="color: #f8f8f2">stu</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setId</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">id</span><span style="color: #f92672">);</span>
+            <span style="color: #f8f8f2">stu</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setName</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">);</span>
+            <span style="color: #f8f8f2">stu</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setAge</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">age</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Save the student object</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">persist</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">stu</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Commit the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">commit</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">catch</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Exception</span> <span style="color: #f8f8f2">ex</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// If there are any exceptions, roll back the changes</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">rollback</span><span style="color: #f92672">();</span>
+            <span style="color: #f92672">}</span>
+            <span style="color: #75715e">// Print the Exception</span>
+            <span style="color: #f8f8f2">ex</span><span style="color: #f92672">.</span><span style="color: #a6e22e">printStackTrace</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">finally</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Close the EntityManager</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">close</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #75715e">/**</span>
+<span style="color: #75715e">     * Read all the Students.</span>
+<span style="color: #75715e">     * </span>
+<span style="color: #75715e">     * @return a List of Students</span>
+<span style="color: #75715e">     */</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #f8f8f2">List</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Student</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">readAll</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+
+        <span style="color: #f8f8f2">List</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Student</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">students</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">;</span>
+
+        <span style="color: #75715e">// Create an EntityManager</span>
+        <span style="color: #f8f8f2">EntityManager</span> <span style="color: #f8f8f2">manager</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span><span style="color: #f92672">.</span><span style="color: #a6e22e">createEntityManager</span><span style="color: #f92672">();</span>
+        <span style="color: #f8f8f2">EntityTransaction</span> <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">;</span>
+
+        <span style="color: #66d9ef">try</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Get a transaction</span>
+            <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getTransaction</span><span style="color: #f92672">();</span>
+            <span style="color: #75715e">// Begin the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">begin</span><span style="color: #f92672">();</span>
+
+            <span style="color: #75715e">// Get a List of Students</span>
+            <span style="color: #f8f8f2">students</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">createQuery</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;SELECT s FROM Student s&quot;</span><span style="color: #f92672">,</span>
+                    <span style="color: #f8f8f2">Student</span><span style="color: #f92672">.</span><span style="color: #a6e22e">class</span><span style="color: #f92672">).</span><span style="color: #a6e22e">getResultList</span><span style="color: #f92672">();</span>
+
+            <span style="color: #75715e">// Commit the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">commit</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">catch</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Exception</span> <span style="color: #f8f8f2">ex</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// If there are any exceptions, roll back the changes</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">rollback</span><span style="color: #f92672">();</span>
+            <span style="color: #f92672">}</span>
+            <span style="color: #75715e">// Print the Exception</span>
+            <span style="color: #f8f8f2">ex</span><span style="color: #f92672">.</span><span style="color: #a6e22e">printStackTrace</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">finally</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Close the EntityManager</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">close</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">students</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #75715e">/**</span>
+<span style="color: #75715e">     * Delete the existing Student.</span>
+<span style="color: #75715e">     * </span>
+<span style="color: #75715e">     * @param id</span>
+<span style="color: #75715e">     */</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">delete</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #75715e">// Create an EntityManager</span>
+        <span style="color: #f8f8f2">EntityManager</span> <span style="color: #f8f8f2">manager</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span><span style="color: #f92672">.</span><span style="color: #a6e22e">createEntityManager</span><span style="color: #f92672">();</span>
+        <span style="color: #f8f8f2">EntityTransaction</span> <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">;</span>
+
+        <span style="color: #66d9ef">try</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Get a transaction</span>
+            <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getTransaction</span><span style="color: #f92672">();</span>
+            <span style="color: #75715e">// Begin the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">begin</span><span style="color: #f92672">();</span>
+
+            <span style="color: #75715e">// Get the Student object</span>
+            <span style="color: #f8f8f2">Student</span> <span style="color: #f8f8f2">stu</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">find</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Student</span><span style="color: #f92672">.</span><span style="color: #a6e22e">class</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Delete the student</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">remove</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">stu</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Commit the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">commit</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">catch</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Exception</span> <span style="color: #f8f8f2">ex</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// If there are any exceptions, roll back the changes</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">rollback</span><span style="color: #f92672">();</span>
+            <span style="color: #f92672">}</span>
+            <span style="color: #75715e">// Print the Exception</span>
+            <span style="color: #f8f8f2">ex</span><span style="color: #f92672">.</span><span style="color: #a6e22e">printStackTrace</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">finally</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Close the EntityManager</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">close</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #75715e">/**</span>
+<span style="color: #75715e">     * Update the existing Student.</span>
+<span style="color: #75715e">     * </span>
+<span style="color: #75715e">     * @param id</span>
+<span style="color: #75715e">     * @param name</span>
+<span style="color: #75715e">     * @param age</span>
+<span style="color: #75715e">     */</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">upate</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #75715e">// Create an EntityManager</span>
+        <span style="color: #f8f8f2">EntityManager</span> <span style="color: #f8f8f2">manager</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ENTITY_MANAGER_FACTORY</span><span style="color: #f92672">.</span><span style="color: #a6e22e">createEntityManager</span><span style="color: #f92672">();</span>
+        <span style="color: #f8f8f2">EntityTransaction</span> <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">;</span>
+
+        <span style="color: #66d9ef">try</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Get a transaction</span>
+            <span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getTransaction</span><span style="color: #f92672">();</span>
+            <span style="color: #75715e">// Begin the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">begin</span><span style="color: #f92672">();</span>
+
+            <span style="color: #75715e">// Get the Student object</span>
+            <span style="color: #f8f8f2">Student</span> <span style="color: #f8f8f2">stu</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">find</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Student</span><span style="color: #f92672">.</span><span style="color: #a6e22e">class</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">id</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Change the values</span>
+            <span style="color: #f8f8f2">stu</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setName</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">);</span>
+            <span style="color: #f8f8f2">stu</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setAge</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">age</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Update the student</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">persist</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">stu</span><span style="color: #f92672">);</span>
+
+            <span style="color: #75715e">// Commit the transaction</span>
+            <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">commit</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">catch</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Exception</span> <span style="color: #f8f8f2">ex</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// If there are any exceptions, roll back the changes</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">transaction</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">transaction</span><span style="color: #f92672">.</span><span style="color: #a6e22e">rollback</span><span style="color: #f92672">();</span>
+            <span style="color: #f92672">}</span>
+            <span style="color: #75715e">// Print the Exception</span>
+            <span style="color: #f8f8f2">ex</span><span style="color: #f92672">.</span><span style="color: #a6e22e">printStackTrace</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">finally</span> <span style="color: #f92672">{</span>
+            <span style="color: #75715e">// Close the EntityManager</span>
+            <span style="color: #f8f8f2">manager</span><span style="color: #f92672">.</span><span style="color: #a6e22e">close</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span>
+    <span style="color: #f92672">}</span>
+<span style="color: #f92672">}</span>
+</pre></td></tr></table></div>
+
+
+<p style="text-align: justify;">৯। ফাইল রান করলে কনসোলে আউটপুট হিসেবে স্টুডেন্টদের আইডি, নাম ও বয়স দেখা যাবে। একইসাথে ডেটাবেজে গিয়ে দেখা যাবে যে কোডে লেখা স্টুডেন্টদের নাম টেবলে স্টোর হয়ে গেছে। এই কোডে আইডি হিসেবে 1,2 ব্যাবহার করা হয়ে গেছে, সুতরাং পরবর্তীতে create কোয়েরি দিয়ে এই ২টা আইডিতে ডেটা রাখা যাবে না, এই ২টা আইডির ডেটা update/delete করতে হবে। অর্থাৎ ডেটা স্টোর হয়ে গেছে। প্রোগ্রাম রিস্টার্ট করলেও এই ২টা ডেটা পাওয়া যাবে। অর্থাৎ জাভা দিয়ে ডেটা পারসিস্ট করানো গেল।</p>
+<img src="images/jpa-hw-2.png">   
+
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+                </div><!--//summary-->
+            </section><!--//Resume Summary section--> 
+        </div><!--//main-body-->
+<!--</div> -->
+ 
+    <footer class="footer">
+        <div class="text-center">                
+                <small class="copyright">Turzo Ahsan</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>    
+    <!-- custom js -->
+    <script type="text/javascript" src="js/main.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function () 
+		{
+			//Disable cut copy paste
+			$('body').bind('cut copy paste', function (e) 
+			{
+				e.preventDefault();
+			});
+	   
+			//Disable mouse right click
+			$("body").on("contextmenu",function(e)
+			{
+				return false;
+			});
+		});
+	</script>
+	
+</body>
+</html>

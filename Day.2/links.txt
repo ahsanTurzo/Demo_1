@@ -1,0 +1,5 @@
+1. A blogpost on Java Persistence API tutorial (Bengali)
+    (link: http://ahsanturzo.uphero.com/myBlog.html)
+
+2. A video on P versus NP (Bengali)
+    (link: https://www.youtube.com/watch?v=S_hQ-JD5BWQ)
